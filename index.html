@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anshkriti | Premium Fashion Boutique</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Premium Luxury Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Golden Splash Screen (Pre-loader) -->
+    <div id="splash-screen">
+        <img src="images/logo.png" alt="Anshkriti Royal Logo" class="splash-logo">
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <h1><a href="index.html" style="text-decoration:none; color:inherit;">अnshकृति</a></h1>
+            <p>Fashion Boutique</p>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="lookbook.html">Lookbook</a>
+            <a href="our-art.html">Our Art</a>
+            <a href="quiz.html">Style Quiz</a>
+        </nav>
+    </header>
+
+            
+    <!-- Royal Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+                        <!-- आपका नया शानदार लोगो -->
+            <img src="images/logo.png" alt="Anshkriti Royal Logo" class="hero-main-logo">
+            <h2>Customising Outfits at Your Door</h2>
+            <p>Premium Tailoring & Block Prints by Anshika Gupta</p>
+            <a href="lookbook.html" class="lookbook-btn">View Our Lookbook</a>
+        </div>
+    </section>
+
+    <!-- Smart Price Estimator Section -->
+    <section class="estimator-section">
+        <div class="estimator-container">
+            <div class="estimator-box">
+                <h2>💰 Price Estimator</h2>
+                <p>Get an instant estimated cost based on your length and fabric.</p>
+                
+                <div class="estimator-grid">
+                    <div class="form-group">
+                        <label>Total Length (Inches) *</label>
+                        <input type="number" id="calcLength" placeholder="e.g. 40" oninput="calculatePrice()">
+                    </div>
+                    <div class="form-group">
+                        <label>Fabric Material *</label>
+                        <select id="calcFabric" onchange="calculatePrice()">
+                            <option value="500">Pure Cotton (Standard)</option>
+                            <option value="900">Chanderi Silk (Premium)</option>
+                            <option value="1200">Designer Georgette</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="price-result-box">
+                    <span>Estimated Price: </span>
+                    <h3 id="finalPrice">₹0</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Measurement Form -->
+    <section class="measurement-section" id="measurement-form">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Book Your Custom Outfit</h2>
+                <p>Enter your details and precise measurements below.</p>
+            </div>
+
+            <form id="orderForm">
+                <!-- 1. Customer Details -->
+                <div class="section-title"><span>01.</span> Customer Details</div>
+                <div class="input-grid">
+                    <div class="form-group">
+                        <label>Your Name *</label>
+                        <input type="text" id="custName" required placeholder="Eg: Priya Sharma">
+                    </div>
+                    <div class="form-group">
+                        <label>Save Measurement As *</label>
+                        <select id="profileName">
+                            <option value="My Size">Profile 1 (My Size)</option>
+                            <option value="Mother's Size">Profile 2 (Mother's Size)</option>
+                            <option value="New Custom Size">New Custom Profile</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 2. Body Measurements -->
+                <div class="section-title"><span>02.</span> Body Measurements (Inches)</div>
+                <div class="input-grid">
+                    <div class="form-group">
+                        <label>Total Length *</label>
+                        <input type="number" id="length" required placeholder="e.g. 40">
+                    </div>
+                    <div class="form-group">
+                        <label>Chest *</label>
+                        <input type="number" id="chest" required placeholder="e.g. 36">
+                    </div>
+                    <div class="form-group">
+                        <label>Waist *</label>
+                        <input type="number" id="waist" required placeholder="e.g. 32">
+                    </div>
+                    <div class="form-group">
+                        <label>Hips *</label>
+                        <input type="number" id="hips" required placeholder="e.g. 38">
+                    </div>
+                    <div class="form-group">
+                        <label>Sleeves *</label>
+                        <input type="number" id="sleeves" required placeholder="e.g. 16">
+                    </div>
+                </div>
+
+                <!-- 3. Style & Design -->
+                <div class="section-title"><span>03.</span> Style & Design</div>
+                <div class="input-grid">
+                    <div class="form-group">
+                        <label>Neck Design *</label>
+                        <select id="neckDesign">
+                            <option value="Round Neck">Round Neck</option>
+                            <option value="V-Neck">V-Neck</option>
+                            <option value="Square Neck">Square Neck</option>
+                            <option value="Boat Neck">Boat Neck</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Sleeve Style *</label>
+                        <select id="sleeveStyle">
+                            <option value="Full Sleeves">Full Sleeves</option>
+                            <option value="Half Sleeves">Half Sleeves</option>
+                            <option value="Mega Sleeves">Mega Sleeves</option>
+                            <option value="Sleeveless">Sleeveless</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Fabric & Print Preference *</label>
+                    <select id="fabricPrint">
+                        <option value="Cotton - Floral Block Print">Cotton - Floral Block Print</option>
+                        <option value="Cotton - Geometric Block Print">Cotton - Geometric Block Print</option>
+                        <option value="Silk - Plain/Solid">Silk - Plain/Solid</option>
+                        <option value="Other (Will discuss on chat)">Other (Will discuss on WhatsApp)</option>
+                    </select>
+                </div>
+
+                <!-- Video Consultation Checkbox -->
+                <div class="form-group full-width consultation-box">
+                    <label>
+                        <input type="checkbox" id="videoCall" value="Yes">
+                        📹 Book a 15-Minute Video Consultation with Stylist (Free)
+                    </label>
+                </div>
+
+                <div class="note-box">
+                    <strong>Note:</strong> You can share any reference photos (Pinterest, etc.) directly on our WhatsApp chat after submitting this form.
+                </div>
+
+                <button type="button" class="primary-btn submit-btn" onclick="sendToWhatsApp()">
+                    Proceed to WhatsApp Order
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Client Diaries (Reviews Section) -->
+    <section class="reviews-section">
+        <div class="reviews-container">
+            <h2>Client Diaries</h2>
+            <p>Real experiences and love from our beautiful clients</p>
+            
+            <div class="reviews-grid">
+                <!-- Review 1 (Real Review from your screenshot) -->
+                <div class="review-card">
+                    <img src="images/review1.jpg" alt="Client Review" class="review-img">
+                    <div class="review-content">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <h4>Ashok Kumar Gupta</h4>
+                        <p class="date">7 months ago</p>
+                        <p class="review-text">"I ordered a custom outfit from Anshkriti and was impressed from start to finish. The quality of the fabric and stitching is exceptional."</p>
+                    </div>
+                </div>
+
+                <!-- Review 2 (Dummy Review - You can change later) -->
+                <div class="review-card">
+                    <img src="images/review2.jpg" alt="Client Review" class="review-img">
+                    <div class="review-content">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <h4>Priya Sharma</h4>
+                        <p class="date">3 months ago</p>
+                        <p class="review-text">"First time ordering from here and it was a wonderful experience. The block print is beautiful and the fit is absolute perfection."</p>
+                    </div>
+                </div>
+
+                <!-- Review 3 (Dummy Review - You can change later) -->
+                <div class="review-card">
+                    <img src="images/review3.jpg" alt="Client Review" class="review-img">
+                    <div class="review-content">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <h4>Neha Verma</h4>
+                        <p class="date">1 month ago</p>
+                        <p class="review-text">"Delivered right on time and the custom measurements saved me a trip to the tailor. Love my new outfit, highly recommended!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>How long does it take to prepare and deliver an order?</summary>
+                    <div class="faq-answer">It usually takes around 10 to 15 working days to process, custom-tailor, and dispatch your order.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Do you offer worldwide shipping?</summary>
+                    <div class="faq-answer">Yes, we ship globally! International shipping charges are calculated separately based on location.</div>
+                </details>
+                <details class="faq-item">
+                    <summary>Can I send a custom design reference?</summary>
+                    <div class="faq-answer">Absolutely! Just select 'New Custom Profile' and share your reference image directly in our WhatsApp chat after submitting the order.</div>
+                </details>
+            </div>
+        </div>
+    </section>
+<!-- Visit Our Store Section -->
+    <section class="store-section">
+        <div class="store-container">
+            <h2 class="store-heading">Visit Our Store</h2>
+            
+            <div class="store-content">
+                <!-- Google Map (Live Iframe) -->
+                <div class="store-map">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Anshkriti+Boutique+Store,+Shop+No.+G+9,+Sector+2,+Central+Spine,+Vidyadhar+Nagar,+Jaipur,+Rajasthan+302039&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+                <!-- Store Details (From your screenshot) -->
+                <div class="store-details">
+                    <h3>Anshkriti Boutique Store</h3>
+                    
+                    <div class="detail-item">
+                        <span class="icon">📍</span>
+                        <p>Shop No. G 9, opposite Shekhawati Hospital, near Urban Theka Cafe, Sector 2, Central Spine, Vidyadhar Nagar, Jaipur, Rajasthan 302039</p>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <span class="icon">📞</span>
+                        <p>+91 88902 88447</p>
+                    </div>
+
+                    <div class="detail-item">
+                        <span class="icon">🕒</span>
+                        <p>Open: 10:30 AM to 8:30 PM</p>
+                    </div>
+
+                    <!-- Get Directions Button (Opens Google Maps directly) -->
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Anshkriti+Boutique+Store,+Sector+2,+Central+Spine,+Vidyadhar+Nagar,+Jaipur,+Rajasthan" target="_blank" class="directions-btn">
+                        📍 Get Directions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- VIP Couture Club Section -->
+    <section class="vip-club">
+        <div class="vip-content">
+            <h2>👑 Anshkriti Royale Club</h2>
+            <p>Join our exclusive VIP club for early access to secret collections, priority custom stitching, and surprise complimentary gifts.</p>
+            <button onclick="joinVIPClub()" class="vip-btn">Join the VIP Club</button>
+        </div>
+    </section>
+
+    <!-- Luxury E-Gift Card Section -->
+    <section class="gift-card-section">
+        <div class="gift-container">
+            <div class="gift-text">
+                <h2>🎁 Give the Gift of Luxury</h2>
+                <p>Surprise your loved ones (Wife, Sister, or Friend) with an Anshkriti Custom E-Gift Card. Let them experience the joy of designing their own dream outfit!</p>
+            </div>
+            
+            <div class="gift-box">
+                <!-- कार्ड का ग्राफ़िक -->
+                <div class="card-design">
+                    <h3>अnshकriti</h3>
+                    <p>ROYAL E-GIFT CARD</p>
+                </div>
+                <!-- फॉर्म -->
+                <div class="gift-form">
+                    <select id="giftAmount">
+                        <option value="5000">₹5,000 Gift Card</option>
+                        <option value="11000">₹11,000 Premium Card</option>
+                        <option value="21000">₹21,000 Bridal/VIP Card</option>
+                    </select>
+                    <input type="text" id="giftTo" placeholder="Recipient's Name (किसके लिए है?)">
+                    <button onclick="buyGiftCard()" class="cta-btn" style="width: 100%;">Buy via WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Anshkriti Fashion Boutique. All Rights Reserved.</p>
+        <p style="margin-top: 8px; font-size: 0.85rem; color: #9ca3af;">
+    Powered by <a href="https://glime.online" target="_blank" style="color: #00ff88; text-decoration: none; font-weight: 600;">Glime</a>
+</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

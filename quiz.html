@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Quiz | Anshkriti Matchmaker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <h1><a href="index.html" style="text-decoration:none; color:inherit;">अnshकriti</a></h1>
+            <p>Fashion Boutique</p>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="lookbook.html">Lookbook</a>
+            <a href="our-art.html">Our Art</a>
+            <a href="quiz.html" class="active">Style Quiz</a>
+        </nav>
+    </header>
+
+    <!-- Quiz Section -->
+    <section class="quiz-section">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2>✨ Find Your Perfect Look ✨</h2>
+                <p>Answer 3 quick questions and let our AI-Stylist match you with your dream outfit.</p>
+            </div>
+
+            <!-- Question 1 -->
+            <div id="q1" class="quiz-step active-step">
+                <h3>1. आप किस मौके के लिए ड्रेस ढूंढ रही हैं?</h3>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="nextQuestion(1, 'Wedding')">💍 Wedding / Festive</button>
+                    <button class="option-btn" onclick="nextQuestion(1, 'Casual')">🌸 Daily / Casual Wear</button>
+                    <button class="option-btn" onclick="nextQuestion(1, 'Party')">🥂 Evening Party</button>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div id="q2" class="quiz-step">
+                <h3>2. आपको कैसा लुक (Vibe) पसंद है?</h3>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="nextQuestion(2, 'Royal')">👑 Royal & Heavy</button>
+                    <button class="option-btn" onclick="nextQuestion(2, 'Modern')">👗 Modern & Chic</button>
+                    <button class="option-btn" onclick="nextQuestion(2, 'Simple')">🌿 Simple & Elegant</button>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div id="q3" class="quiz-step">
+                <h3>3. आपका फेवरेट कलर टोन क्या है?</h3>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="showResult('Pastel')">🎀 Soft Pastels</button>
+                    <button class="option-btn" onclick="showResult('Dark')">🖤 Dark & Bold</button>
+                    <button class="option-btn" onclick="showResult('Bright')">🌺 Bright & Vibrant</button>
+                </div>
+            </div>
+
+            <!-- Loading Spinner (जादू दिखाने के लिए) -->
+            <div id="quiz-loading" class="quiz-step">
+                <h3><br>✨ Anshkriti Stylist is finding your match... ✨</h3>
+            </div>
+
+            <!-- Final Result -->
+            <div id="quiz-result" class="quiz-step">
+                <h2 class="result-title">Here is your Perfect Match! 💖</h2>
+                <div class="result-card">
+                    <!-- यह डमी फोटो है, आप इसे images/look1.jpg कर सकते हैं -->
+                    <img src="https://images.unsplash.com/photo-1617351659858-a8d67283ebbe?q=80&w=400" alt="Your Outfit" id="result-img">
+                    <h3 id="result-name">Premium Chanderi Silk Suit</h3>
+                    <p id="result-desc">Based on your choices, this elegant piece will make you stand out!</p>
+                    <a href="index.html#measurement-form" class="cta-btn" style="margin-top:20px; display:inline-block;">Customize This Look</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Anshkriti Fashion Boutique. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Quiz Logic (यहीं पर डाल दिया ताकि अलग फाइल में न उलझना पड़े) -->
+    <script>
+        function nextQuestion(currentQ, answer) {
+            // वर्तमान सवाल छुपाएं
+            document.getElementById('q' + currentQ).classList.remove('active-step');
+            // अगला सवाल दिखाएं
+            document.getElementById('q' + (currentQ + 1)).classList.add('active-step');
+        }
+
+       function showResult(answer) {
+            document.getElementById('q3').classList.remove('active-step');
+            document.getElementById('quiz-loading').classList.add('active-step');
+
+            setTimeout(() => {
+                document.getElementById('quiz-loading').classList.remove('active-step');
+                document.getElementById('quiz-result').classList.add('active-step');
+                
+                // यहाँ से फोटो और नाम अपने आप बदलेंगे
+                let resultImg = document.getElementById('result-img');
+                let resultName = document.getElementById('result-name');
+
+                if(answer === 'Pastel') {
+                    resultName.innerText = "Pastel Hand-Block Print Suit";
+                    resultImg.src = "images/look1.jpg"; // आपकी पहली फोटो
+                } else if(answer === 'Dark') {
+                    resultName.innerText = "Royal Dark Anarkali Suit";
+                    resultImg.src = "images/look2.jpg"; // आपकी दूसरी फोटो
+                } else {
+                    resultName.innerText = "Vibrant Designer Lehenga";
+                    resultImg.src = "images/look3.jpg"; // आपकी तीसरी फोटो
+                }
+            }, 2000);
+        }
+        
+    </script>
+</body>
+</html>
